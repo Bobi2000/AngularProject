@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ArticleModule } from './article/article.module';
 import { UserModule } from './user/user.module';
+import { FormsModule } from '@angular/forms';
+import { IndexComponent } from './boards/index/index.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { UserModule } from './user/user.module';
     NotFoundComponent,
     LoginComponent,
     RegisterComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { UserModule } from './user/user.module';
     AppRoutingModule,
     ArticleModule,
     UserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

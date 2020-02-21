@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IUser } from '../shared/interfaces/user';
 import { UsersService } from '../user/users.service';
 import { ArticleService } from './articles.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -11,13 +12,23 @@ import { ArticleService } from './articles.service';
 })
 export class ArticleComponent implements OnInit {
 
-get articles() { return this.articleService.articles; }
+get isAdmin() { return this.userService.isAdmin; }
 
-  constructor(private articleService: ArticleService)  {
+get articles() 
+{ 
+  return this.articleService.articles; 
+}
+
+  constructor(private articleService: ArticleService, private userService: UsersService)  {
   }
 
   ngOnInit() {
     this.articleService.loadArticles();
+  }
+
+  delelteArticle(id: number) {
+    console.log('deleting ' + id);
+    this.articleService.deleteArticle(id);
   }
 
 }

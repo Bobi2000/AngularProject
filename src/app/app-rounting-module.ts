@@ -4,6 +4,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
+import { IndexComponent } from './boards/index/index.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
         data: {
             isLogged: false
         },
+    },
+    {
+        path: 'boards',
+        component: IndexComponent,
     },
     {
         path: '**',

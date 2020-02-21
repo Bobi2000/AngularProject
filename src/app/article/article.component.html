@@ -3,9 +3,8 @@
     <div class="row" *ngIf="articles">
 
       <div *ngFor="let article of articles" class="card mb-4 shadow-sm">
-
         <img class="bd-placeholder-img card-img-top" width="100%" height="550" src={{article.imgUrl}}>
-       <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" src={{article.imgUrl}}>
+        <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" src={{article.imgUrl}}>
           <title>{{article.title}}</title>
           <rect width="100%" height="100%" fill="#55595c"></rect>
           <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
@@ -16,10 +15,15 @@
           </p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-            <a type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/article/detail', article.id]">View</a>
-              <a type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/article/edit', article.id]">Edit</a>
+              <a type="button" class="btn btn-sm btn-outline-secondary"
+                [routerLink]="['/article/detail', article.id]">View</a>
+              <a *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary"
+                [routerLink]="['/article/edit', article.id]">Edit</a>
+              <a *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary"
+              (click)="delelteArticle(article.id)">Delete</a>
             </div>
-            <small class="text-muted">{{article.createdDate.toString().substr(0, article.createdDate.toString().length - 9)}}</small>
+            <small
+              class="text-muted">{{article.createdDate.toString().substr(0, article.createdDate.toString().length - 17)}}</small>
           </div>
         </div>
       </div>

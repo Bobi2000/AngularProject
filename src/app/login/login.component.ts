@@ -15,9 +15,12 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login(username: string, password: string) {
+  handleLogin({ username, password }: { username: string, password: string }) {
     this.userService.login(username, password);
-    this.router.navigate(['']);
+    /*this.userService.login(username, password).subscribe((token) => {
+      console.log(token);
+      this.router.navigate(['']);
+    }, console.error);*/
   }
 
 }

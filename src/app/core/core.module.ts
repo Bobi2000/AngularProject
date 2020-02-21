@@ -8,12 +8,12 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [NavigationComponent, ArticleComponent, FooterComponent],
+  declarations: [NavigationComponent, FooterComponent , ArticleComponent, FooterComponent],
   imports: [
     CommonModule,
     NgbNavModule,
     RouterModule
   ],
-  exports: [NavigationComponent, ArticleComponent]
+  exports: [NavigationComponent,FooterComponent , ArticleComponent]
 })
 export class CoreModule { }

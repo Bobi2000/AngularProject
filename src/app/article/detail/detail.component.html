@@ -23,12 +23,59 @@
       </div>
     </div>
   </div> -->
-<div class="container">
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-            <h1 class="display-4 font-weight-normal">{{article.title}}</h1>
-            <img class="bd-placeholder-img card-img-top" width="1000" height="550" src={{article.imgUrl}}>
-            <p class="lead font-weight-normal"> {{article.text}} </p>
-        <div class="product-device box-shadow d-none d-md-block"></div>
-        <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+<div *ngIf="article" class="container">
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <h1 class="display-4 font-weight-normal">{{article.title}}</h1>
+    <img class="bd-placeholder-img card-img-top" width="1000" height="550" src={{article.imgUrl}}>
+    <p class="lead font-weight-normal"> {{article.text}} </p>
+    <div class="product-device box-shadow d-none d-md-block"></div>
+    <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+  </div>
+
+  <div *ngIf="isLogged" class="position-relative overflow-hidden p-3 p-md-5 m-md-3  text-center bg-light">
+    <p class="lead font-weight-normal"> Comments: </p>
+    <form>
+      <div class="form-group">
+        <label for="text">Post a comment</label>
+        <textarea #commentInput type="text" class="form-control" placeholder="Enter Text"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="handlePostCommnent(commentInput.value, article.id)">Post
+        Comment</button>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-default widget">
+      <div class="panel-heading">
+        <span class="glyphicon glyphicon-comment"></span>
+        <h3 class="panel-title">Comments</h3>
+      </div>
+      <div class="panel-body">
+        <ul *ngIf="comments" class="list-group">
+          <div class="invis">
+            ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+          </div>
+          <li *ngFor="let comment of comments" class="list-group-item">
+            <div class="row">
+              <div class="col-xs-10 col-md-11">
+                <div>
+                  <div class="mic-info">
+                    By: <a href="#">{{comment.userUsername}}</a>
+                  </div>
+                </div>
+                <div class="comment-text">
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{comment.text}}
+                </div>
+                <br>
+                <div *ngIf="isLogged && comment.userUsername == isUser" class="action">
+                  <button type="button" (click)="handleDeleteComment(comment.id, article.id)" class="btn btn-danger btn-xs" title="Delete">Delete</button>
+                </div>
+              </div>
+            </div>
+          </li>
+          <hr>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>

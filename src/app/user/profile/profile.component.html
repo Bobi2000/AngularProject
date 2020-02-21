@@ -1,1 +1,37 @@
-<p>profile works!</p>
+<br>
+<div class="container emp-profile">
+
+    <div class="row">
+        <!-- <div class="col-md-4">
+                <div class="profile-img">
+                    
+                </div>
+            </div>-->
+        <div class="col-md-4">
+            <div class="profile-head">
+                <h5>
+                    {{isUser.username}}
+                </h5>
+                <h6>
+
+                </h6>
+                <p class="proile-rating"></p>
+                <ul class="nav nav-tabs" id="myTab" role="tablist"></ul>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <form>
+                <label for="password">Current Password</label>
+                <input #passwordInput name="password" type="password" class="form-control" placeholder="enter password">
+
+                <label for="password">New Password</label>
+                <input #newPasswordInput name="password" type="password" class="form-control" placeholder="enter new password">
+
+                <br>
+
+                <button type="button" (click)="handleChangePassword(passwordInput.value, newPasswordInput.value)" class="profile-edit-btn" name="btnAddMore">Change Password </button>
+            </form>
+        </div>
+    </div>
+
+</div>
