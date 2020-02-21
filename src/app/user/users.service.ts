@@ -48,6 +48,8 @@ export class UsersService {
       localStorage.setItem('current-user', JSON.stringify({ username, password, isAdmin }));
       this.currentUser = user;
       this.router.navigate(['']);
+    }, error => {
+      alert('Wrong Credentials!');
     });
     /*return this.http.get(`https://localhost:44331/api/login/${username}/${password}`).pipe(tap((user: any) => {
       console.log(user);

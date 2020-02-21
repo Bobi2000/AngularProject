@@ -29,7 +29,7 @@ export class ArticleService {
   }
 
   loadComments(id: number) {
-    this.http.get<IComment[]>(`https://localhost:44331/api/comments/${id}`).subscribe(comments => {
+    this.http.get<IComment[]>(`https://localhost:44331/api/comments/${id}/article`).subscribe(comments => {
       this.comments = comments;
       console.log(comments);
     });
@@ -49,13 +49,13 @@ export class ArticleService {
   }
 
   createComment(comment: string, username: string, id: number) {
-    this.http.get(`https://localhost:44331/api/comments/${id}/${comment}/${username}`).subscribe(() => {
+    this.http.get(`https://localhost:44331/api/comments/${id}/${comment}/${username}/article`).subscribe(() => {
       this.loadComments(id);
     });
   }
 
   deleteComment(id: number, articleId: number) {
-    this.http.get(`https://localhost:44331/api/comments/${id}/delete`).subscribe(() => {
+    this.http.get(`https://localhost:44331/api/comments/${id}/delete/delete`).subscribe(() => {
       this.loadComments(articleId);
     });
   }

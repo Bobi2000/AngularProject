@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
 import { IndexComponent } from './boards/index/index.component';
+import { DetailsComponent } from './boards/details/details.component';
+import { CreateBoardComponent } from './boards/create-board/create-board.component';
 
 const routes: Routes = [
     {
@@ -31,6 +33,19 @@ const routes: Routes = [
     {
         path: 'boards',
         component: IndexComponent,
+    },
+    {
+        path: 'boards/create',
+        component: CreateBoardComponent,
+        canActivate: [AuthGuard],
+        data: {
+            isLogged: true
+        }
+    },
+    {
+        path: 'boards/details/:id',
+        component: DetailsComponent,
+        data: { shouldFetchBoard: true }
     },
     {
         path: '**',

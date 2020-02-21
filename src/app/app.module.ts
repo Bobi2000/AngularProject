@@ -14,6 +14,8 @@ import { ArticleModule } from './article/article.module';
 import { UserModule } from './user/user.module';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './boards/index/index.component';
+import { DetailsComponent } from './boards/details/details.component';
+import { CreateBoardComponent } from './boards/create-board/create-board.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { IndexComponent } from './boards/index/index.component';
     LoginComponent,
     RegisterComponent,
     IndexComponent,
+    DetailsComponent,
+    CreateBoardComponent,
   ],
   imports: [
     BrowserModule,
