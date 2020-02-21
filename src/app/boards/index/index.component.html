@@ -1,0 +1,26 @@
+<br>
+<div class="container">
+    <div *ngIf="boards" class="content">
+        <div *ngIf="isLogged" class="row">
+            <div class="col-md-5 col-md-offset-10">
+                <a routerLink="/boards/create" class="btn btn-light">
+                    <h3>Create A Discussion</h3>
+                </a>
+            </div>
+        </div>
+        <br>
+
+        <div *ngFor="let board of boards" class="card">
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <a [routerLink]="['/boards/details', board.id]">
+                        <p>{{board.title}}</p>
+                    </a>
+                    <footer class="blockquote-footer">{{board.userUsername}} <cite title="Source Title"></cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br>
