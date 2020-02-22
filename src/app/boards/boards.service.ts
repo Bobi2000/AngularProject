@@ -38,6 +38,12 @@ export class BoardsService {
     });
   }
 
+  deleteBoard(id: number) { 
+    this.http.get(`https://localhost:44331/api/boards/${id}/delete`).subscribe(() => {
+      
+    });
+  }
+
   loadComments(id: number) {
     this.http.get<IComment[]>(`https://localhost:44331/api/comments/${id}/board`).subscribe(comments => {
       this.comments = comments;
@@ -48,6 +54,12 @@ export class BoardsService {
   createComment(comment: string, username: string, id: number) {
     this.http.get(`https://localhost:44331/api/comments/${id}/${comment}/${username}/board`).subscribe(() => {
       this.loadComments(id);
+    });
+  }
+
+  deleteComment(id: number, articleId: number) {
+    this.http.get(`https://localhost:44331/api/comments/${id}/delete/delete`).subscribe(() => {
+      this.loadComments(articleId);
     });
   }
 }

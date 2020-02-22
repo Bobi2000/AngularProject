@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardsService } from '../boards.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/user/users.service';
 
 @Component({
@@ -10,13 +10,19 @@ import { UsersService } from 'src/app/user/users.service';
 })
 export class DetailsComponent implements OnInit {
 
-  get board() { return this.boardsService.board; }
+  get board() { console.log(this.boardsService.board); return this.boardsService.board; }
 
   get comments() { return this.boardsService.comments; }
 
   get isLogged() { return this.userService.isLogged; }
 
-  constructor(private activatedRoute: ActivatedRoute, private boardsService: BoardsService, private userService: UsersService) { }
+  get isUser() { return this.userService.currentUser.username; }
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private boardsService: BoardsService,
+    private userService: UsersService,
+    private router: Router) { }
 
   ngOnInit() {
     this.boardsService.loadBoard(+this.activatedRoute.snapshot.params.id);
@@ -25,6 +31,15 @@ export class DetailsComponent implements OnInit {
 
   handleCreateComment(message: string, id: number) {
     this.boardsService.createComment(message, this.userService.currentUser.username, id);
+  }
+
+  handleDeleteComment(id: number, articleId: number) {
+    this.boardsService.deleteComment(id, articleId);
+  }
+
+  handleDeleteBoard(id: number) {
+    this.boardsService.deleteBoard(id);
+    this.router.navigate(['boards']);
   }
 
 }

@@ -78,6 +78,7 @@ export class UsersService {
 
       const isAdmin = user.isAdmin;
       const newPassword = user.password;
+      
       localStorage.setItem('current-user', JSON.stringify({ username, newPassword, isAdmin }));
       this.currentUser = user;
       this.router.navigate(['']);
