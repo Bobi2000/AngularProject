@@ -17,7 +17,7 @@
         <label for="text">Post a comment</label>
         <textarea #commentInput type="text" class="form-control" placeholder="Enter Text"></textarea>
       </div>
-      <button type="button" class="btn btn-primary" (click)="handleCreateComment(commentInput.value, board.id)">Post
+      <button type="button" class="btn btn-primary" (click)="handleCreateComment(commentInput.value, board.id)" (click)="commentInput.value=''" >Post
         Comment</button>
     </form>
   </div>

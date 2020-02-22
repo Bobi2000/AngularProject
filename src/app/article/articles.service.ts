@@ -48,6 +48,11 @@ export class ArticleService {
     });
   }
 
+  editArticle(id: number, title: string, text: string, imageUrl: string) {
+    this.http.get(`https://localhost:44331/api/articles/${id}/${title}/${text}/edit`, { headers: { imageUrl }}).subscribe(() => {
+    });
+  }
+
   createComment(comment: string, username: string, id: number) {
     this.http.get(`https://localhost:44331/api/comments/${id}/${comment}/${username}/article`).subscribe(() => {
       this.loadComments(id);

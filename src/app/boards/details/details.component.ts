@@ -31,6 +31,7 @@ export class DetailsComponent implements OnInit {
 
   handleCreateComment(message: string, id: number) {
     this.boardsService.createComment(message, this.userService.currentUser.username, id);
+    this.router.navigate(['boards/details/' + id]);
   }
 
   handleDeleteComment(id: number, articleId: number) {
